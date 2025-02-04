@@ -9,8 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let targetColor = "";
 
     function getRandomColor() {
-        const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
-        return randomColor;
+        return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
     }
 
     function generateColors() {
@@ -42,12 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
             gameStatus.textContent = "Correct! 🎉";
             score++;
             scoreDisplay.textContent = score;
+            setTimeout(generateColors, 1000); // Change target color after a short delay
         } else {
             gameStatus.textContent = "Wrong! Try again. ❌";
         }
     }
 
     newGameButton.addEventListener("click", () => {
+        score = 0;
+        scoreDisplay.textContent = score;
         gameStatus.textContent = "";
         generateColors();
     });
